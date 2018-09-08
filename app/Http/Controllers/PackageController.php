@@ -46,4 +46,21 @@ class PackageController extends Controller
         return $package;
     }
 
+    public function update(Request $request, $id)
+    {
+        $package = Package::find($id);
+        $package->title = $request->title;
+        $package->slug = $request->slug;
+        $package->user_id = $request->user_id;
+        $package->body = $request->body;
+        $package->thumbnail = $request->thumbnail;
+        $package->price = $request->price;
+        $package->discount = $request->discount;
+        $package->is_active = $request->is_active;
+        $package->is_expired = $request->is_expired;
+        $package->is_deleted = $request->is_deleted;
+        $package->save();
+        return Package::find($id);    
+    }
+
 }
