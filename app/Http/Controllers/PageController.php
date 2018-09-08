@@ -41,6 +41,7 @@ class PageController extends Controller
         $page = Page::find($id);
         $page->delete();
         $page= Page::find($id);
+        return $page;
     }
 
     public function update(Request $request, $id)

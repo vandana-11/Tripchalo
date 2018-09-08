@@ -31,4 +31,19 @@ class PackageController extends Controller
         return $page;
     }
 
+    public function show($id)
+    {
+        return Package::find($id);
+    }
+
+    public function edit(Request $request, $id)
+    {
+
+        if ($request->has('delete')) {
+        $package = Package::find($id);
+        $package->delete();
+        $package= Package::find($id);
+        return $package;
+    }
+
 }
