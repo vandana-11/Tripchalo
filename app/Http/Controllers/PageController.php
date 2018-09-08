@@ -29,4 +29,36 @@ class PageController extends Controller
       
     }
 
+    public function show($id)
+    {
+        return Page::find($id);
+    }
+
+    public function edit(Request $request, $id)
+    {
+
+        if ($request->has('delete')) {
+        $page = Page::find($id);
+        $page->delete();
+        $page= Page::find($id);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $page = Page::find($id);
+        $page->user_id = $request->user_id;
+        $page->title = $request->title;
+        $page->body = $request->body;
+        $page->slug = $request->slug;
+        $page->order_id = $request->order_id;
+        $page->save();
+        return Page::find($id);    
+    }
+
+    public function destroy(Page $page)
+    {
+        $page = Page::find($id);
+        return $page->delete();
+    }
+
 }
