@@ -63,4 +63,10 @@ class PackageController extends Controller
         return Package::find($id);    
     }
 
+    public function destroy(Package $page)
+    {
+        $package = Package::find($id);
+        return $package->delete();
+    }
+
 }
