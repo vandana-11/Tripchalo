@@ -38,6 +38,15 @@ class ContactController extends Controller
         $contact= Contact::find($id);
         return $contact;
     }
-    
+
+    public function update(Request $request, $id)
+    {
+        $contact = Contact::find($id);
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+        $contact->save();
+        return $contact;
+           
+    }
 
 }
