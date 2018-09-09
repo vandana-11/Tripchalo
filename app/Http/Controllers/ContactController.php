@@ -24,4 +24,20 @@ class ContactController extends Controller
         $contact->save();
         return $contact;
     }
+    public function show($id)
+    {
+        return Contact::find($id);
+    }
+
+    public function edit(Request $request, $id)
+    {
+
+        if ($request->has('delete')) {
+        $contact = Contact::find($id);
+        $contact->delete();
+        $contact= Contact::find($id);
+        return $contact;
+    }
+    
+
 }
