@@ -45,8 +45,13 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->message = $request->message;
         $contact->save();
-        return $contact;
-           
+        return $contact;        
+    }
+
+    public function destroy(Contact $page)
+    {
+        $contact = Contact::find($id);
+        return $contact->delete();
     }
 
 }
