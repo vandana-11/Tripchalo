@@ -37,3 +37,8 @@ Route::post('/contact', 'ContactController@store');
 Route::put('/contact/{id}', 'ContactController@update'); 
 Route::delete('/contact/{id}', 'ContactController@destroy');
 
+Route::get('/image', 'ImageController@index');
+Route::get('/image/{id}', 'ImageController@show');
+Route::post('/image', 'ImageController@store');
+Route::put('/image/{id}', 'ImageController@update'); 
+Route::delete('/image/{id}', 'ImageController@destroy');
