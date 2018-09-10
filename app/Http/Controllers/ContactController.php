@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-   public function index()
-    {
+    public function index()
+   	{
         return Contact::all();
     }
+
+
     public function create()
     {
         return Contact::all();
@@ -24,6 +26,8 @@ class ContactController extends Controller
         $contact->save();
         return $contact;
     }
+
+    
     public function show($id)
     {
         return Contact::find($id);

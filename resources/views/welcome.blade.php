@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>TripChalo | Your Ultimate holiday destination</title>
+<title>TripChalo | Your Ultimate holiday destination </title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,7 +40,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/menu_jquery.js"></script>
 <!--//pop-up--> 
 </head>
+@csrf
 <body>
+
     <!--header-->
     <div class="header">
         <div class="container">

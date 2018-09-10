@@ -6,14 +6,21 @@ use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
+    /**
+     * Returns all data in packages table
+     * @return [type] [description]
+     */
     public function index()
     {
         return Package::all();
     }
-    public function create()
-    {
-        return Package::all();
-    }
+
+    
+    /**
+     * Create a new record into packages table
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function store(Request $request)
     {
         $package = new Package;
@@ -28,24 +35,27 @@ class PackageController extends Controller
         $package->is_expired = $request->is_expired;
         $package->is_deleted = $request->is_deleted;
         $package->save();
-        return $page;
+        return $package;
     }
 
+    /**
+     * Return one row based on given id
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function show($id)
     {
         return Package::find($id);
     }
 
-    public function edit(Request $request, $id)
-    {
 
-        if ($request->has('delete')) {
-        $package = Package::find($id);
-        $package->delete();
-        $package= Package::find($id);
-        return $package;
-    }
 
+    /**
+     * Update a given row based on given id
+     * @param  Request $request [description]
+     * @param  [type]  $id      [description]
+     * @return [type]           [description]
+     */
     public function update(Request $request, $id)
     {
         $package = Package::find($id);
@@ -63,7 +73,13 @@ class PackageController extends Controller
         return Package::find($id);    
     }
 
-    public function destroy(Package $page)
+
+    /**
+     * Delete a record based on given $id
+     * @param  Package $page [description]
+     * @return [type]        [description]
+     */
+    public function destroy($id)
     {
         $package = Package::find($id);
         return $package->delete();

@@ -6,17 +6,23 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    
+    /**
+     * Returns all data from pages table
+     * @return [type] [description]
+     */
     public function index()
     {
         return Page::all();
     }
 
-     public function create()
-    {
-        return Page::all();
-    }
+      /**
+     * Create a new record into pages table
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
 
-     public function store(Request $request)
+    public function store(Request $request)
     {
         $page = new Page;
         $page->user_id = $request->user_id;
@@ -29,20 +35,22 @@ class PageController extends Controller
       
     }
 
+    /**
+     * Return one row based on given id
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function show($id)
     {
         return Page::find($id);
     }
 
-    public function edit(Request $request, $id)
-    {
-
-        if ($request->has('delete')) {
-        $page = Page::find($id);
-        $page->delete();
-        $page= Page::find($id);
-        return $page;
-    }
+    /**
+     * Update a given row based on given id
+     * @param  Request $request [description]
+     * @param  [type]  $id      [description]
+     * @return [type]           [description]
+     */
 
     public function update(Request $request, $id)
     {
@@ -53,13 +61,19 @@ class PageController extends Controller
         $page->slug = $request->slug;
         $page->order_id = $request->order_id;
         $page->save();
-        return Page::find($id);    
+        return $page;
+
     }
 
-    public function destroy(Page $page)
+    /**
+     * Delete a record based on given $id
+     * @param  Package $page [description]
+     * @return [type]        [description]
+     */
+    public function destroy($id)
     {
         $page = Page::find($id);
-        return $page->delete();
+        return $page->delete() ? 'True' : 'False';
     }
 
 }
