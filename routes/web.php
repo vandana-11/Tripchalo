@@ -27,8 +27,8 @@ Route::delete('/page/{id}', 'PageController@destroy');
 
 
 
-// Route::get('/package', 'PackageController@index');
-// Route::get('/package/{id}', 'PackageController@show');
-// Route::post('/package', 'PackageController@store');
-// Route::put('/package/{id}', 'PackageController@update'); 
-// Route::delete('/package/{id}', 'PackageController@destroy');
+Route::get('/package', 'PackageController@index');
+Route::get('/package/{id}', 'PackageController@show');
+Route::post('/package', 'PackageController@store');
+Route::put('/package/{id}', 'PackageController@update'); 
+Route::delete('/package/{id}', 'PackageController@destroy');

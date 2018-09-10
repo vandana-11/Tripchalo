@@ -70,7 +70,7 @@ class PackageController extends Controller
         $package->is_expired = $request->is_expired;
         $package->is_deleted = $request->is_deleted;
         $package->save();
-        return Package::find($id);    
+        return $package;    
     }
 
 
@@ -82,7 +82,7 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $package = Package::find($id);
-        return $package->delete();
+        return $package->delete() ? 'True' : 'False';
     }
 
 }
