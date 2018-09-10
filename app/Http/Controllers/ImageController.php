@@ -39,7 +39,7 @@ class ImageController extends Controller
      */
     public function show($id)
     {
-        return Page::find($id);
+        return Image::find($id);
     }
 
     /**
@@ -51,15 +51,12 @@ class ImageController extends Controller
 
     public function update(Request $request, $id)
     {
-        $page = Page::find($id);
-        $page->user_id = $request->user_id;
-        $page->title = $request->title;
-        $page->body = $request->body;
-        $page->slug = $request->slug;
-        $page->order_id = $request->order_id;
-        $page->save();
-        return $page;
-
+        $image = Image::find($id);
+        $image->package_id = $request->package_id;
+        $image->filename = $request->filename;
+        $image->path = $request->path;
+        $image->save();
+        return $image;
     }
 
     /**
@@ -69,8 +66,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        $page = Page::find($id);
-        return $page->delete() ? 'True' : 'False';
+        $image = Image::find($id);
+        return $image->delete() ? 'True' : 'False';
     }
 
 }
