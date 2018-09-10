@@ -25,10 +25,15 @@ Route::post('/page', 'PageController@store');
 Route::put('/page/{id}', 'PageController@update'); 
 Route::delete('/page/{id}', 'PageController@destroy');
 
-
-
 Route::get('/package', 'PackageController@index');
 Route::get('/package/{id}', 'PackageController@show');
 Route::post('/package', 'PackageController@store');
 Route::put('/package/{id}', 'PackageController@update'); 
 Route::delete('/package/{id}', 'PackageController@destroy');
+
+Route::get('/contact', 'ContactController@index');
+Route::get('/contact/{id}', 'ContactController@show');
+Route::post('/contact', 'ContactController@store');
+Route::put('/contact/{id}', 'ContactController@update'); 
+Route::delete('/contact/{id}', 'ContactController@destroy');
+

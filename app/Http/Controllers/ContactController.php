@@ -5,18 +5,21 @@ use App\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
-{
+{   
+    /**
+     * Returns all data from contacts table
+     * @return [type] [description]
+     */
+
     public function index()
    	{
         return Contact::all();
     }
 
-
-    public function create()
-    {
-        return Contact::all();
-    }
-
+        /**
+         * Create a new record into contacts table
+         * @return [type] [description]
+         */
     public function store(Request $request)
     {
         $contact = new Contact;
@@ -27,21 +30,23 @@ class ContactController extends Controller
         return $contact;
     }
 
-    
+    /**
+     * Return one row based on given id
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+
     public function show($id)
     {
         return Contact::find($id);
     }
 
-    public function edit(Request $request, $id)
-    {
-
-        if ($request->has('delete')) {
-        $contact = Contact::find($id);
-        $contact->delete();
-        $contact= Contact::find($id);
-        return $contact;
-    }
+    /**
+     * Update a given row based on given id
+     * @param  Request $request [description]
+     * @param  [type]  $id      [description]
+     * @return [type]           [description]
+     */
 
     public function update(Request $request, $id)
     {
@@ -52,10 +57,16 @@ class ContactController extends Controller
         return $contact;        
     }
 
-    public function destroy(Contact $page)
+    /**
+     * Delete a record based on given $id
+     * @param  Package $page [description]
+     * @return [type]        [description]
+     */
+
+    public function destroy($id)
     {
         $contact = Contact::find($id);
-        return $contact->delete();
+        return $contact->delete() ? 'True' : 'False';
     }
 
 }
