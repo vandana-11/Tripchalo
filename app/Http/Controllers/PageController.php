@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 use App\Page;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,12 @@ class PageController extends Controller
         return Page::all();
     }
 
+
+    public function create() {
+        $page = new Page;
+        return view('pages',$page);
+    }
+
       /**
      * Create a new record into pages table
      * @param  Request $request [description]
@@ -25,13 +32,14 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $page = new Page;
-        $page->user_id = $request->user_id;
+        $page->user_id = Auth::user()->id;
         $page->title = $request->title;
         $page->body = $request->body;
         $page->slug = $request->slug;
         $page->order_id = $request->order_id;
         $page->save();
         return $page;
+        
       
     }
 
@@ -76,4 +84,9 @@ class PageController extends Controller
         return $page->delete() ? 'True' : 'False';
     }
 
+
+    
+
 }
+
+
