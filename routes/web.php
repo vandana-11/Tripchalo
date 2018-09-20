@@ -1,6 +1,7 @@
 <?php
 
 use App\Page;
+use App\Package;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,12 +49,17 @@ Route::prefix('dashboard')->group(function() {
 });
 
 
+Route::get('/packages', function() { 
+	// Do the fetch here and add data
+	$packages = Package::all(); 
+	return view('packages', ['packages' => $packages]);
+});
+
 Route::get('/{slug}', function($slug) {
 	$page = Page::where('slug', $slug)->first();
 	return view('page', ['page' => $page]);
 	
 });
-
 
 
 
