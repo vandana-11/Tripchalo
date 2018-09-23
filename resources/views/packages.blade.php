@@ -26,8 +26,8 @@
 										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 									</div>
 									<div class="col-md-4 deals-price">
-										<p class="now">${{ ($package->price - $package->discount) }}</p>
-										<p>$ {{ $package->price }}</p>
+										<p class="now">$ {{ $package->price }}</p>
+										<p>$ {{ $package->price - $package->discount }}</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>

@@ -12,10 +12,13 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return Package::all();
+        return Package::all(); 
     }
 
-    
+    public function create() {
+        $package = new Package;
+        return view('add_packages',$package);
+    } 
     /**
      * Create a new record into packages table
      * @param  Request $request [description]
@@ -44,11 +47,12 @@ class PackageController extends Controller
      * @return [type]     [description]
      */
     public function show($id)
-    {
-        return Package::find($id);
+    { 
+        $package = Package::find($id);
+        return view('edit_packages', ['package' => $package]);
     }
 
-
+   
 
     /**
      * Update a given row based on given id
@@ -82,7 +86,7 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $package = Package::find($id);
-        return $package->delete() ? 'True' : 'False';
+        return $package->delete();
     }
 
 }

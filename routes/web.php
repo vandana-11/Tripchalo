@@ -29,6 +29,7 @@ Route::prefix('dashboard')->group(function() {
 	Route::put('/page/{id}', 'PageController@update'); 
 	Route::delete('/page/{id}', 'PageController@destroy');
 
+	Route::get('/package/add', 'PackageController@create'); 
 	Route::get('/package', 'PackageController@index');
 	Route::get('/package/{id}', 'PackageController@show');
 	Route::post('/package', 'PackageController@store');

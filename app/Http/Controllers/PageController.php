@@ -20,7 +20,7 @@ class PageController extends Controller
 
     public function create() {
         $page = new Page;
-        return view('pages',$page);
+        return view('add_pages',$page);
     }
 
       /**
@@ -39,7 +39,7 @@ class PageController extends Controller
         $page->order_id = $request->order_id;
         $page->save();
         return $page;
-        
+    
       
     }
 
