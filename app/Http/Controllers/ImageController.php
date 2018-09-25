@@ -21,7 +21,8 @@ class ImageController extends Controller
      * @return [type]           [description]
      */
     public function create() {
-       return view('add_images');
+       $image = new Image;
+        return view('add_images',$image);
     }
     public function store(Request $request)
     {

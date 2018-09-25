@@ -19,7 +19,7 @@
 
 			<div class="form-group">
 				<label for="filename">Filename:</label>
-				<input type="file" name="filename" v-model="filename" class="form-control">
+				<input type="test" name="filename" v-model="filename" class="form-control">
 			</div>
 
 			<div class="form-group">
@@ -44,7 +44,12 @@
 						<td>@{{ image.package_id }}</td>
 						<td>@{{ image.filename }}</td>
 						<td>@{{ image.path }}</td>	
+						<td>
+							<a :href="'/dashboard/image/' + image.id " class="btn btn-s btn-info">Edit</a>
+							<button class="btn btn-info" @click="delete_image(image.id,index)">Delete</button>
+						</td>
 					</tr>
+
 				</tbody>
 			</table>
 		</div>
@@ -78,7 +83,9 @@
 					path: this.path,
 					
 				};
-		   	    axios.post('/dashboard/image', data)
+
+				
+				 axios.post('/dashboard/image', data)
                         .then(response => {
                         	
                         	swal(
@@ -86,17 +93,31 @@
 						  'You clicked the button!',
 						  'success'
 							);
+
                             this.images.push(response.data);
                             this.package_id = '';
-                            this.filename = '';
-                            this.page = '';
+                            this.filenamename = '';
+                            this.path = '';
                             
                         });
-			}
 
-			
+			},
+
+			delete_image :function(id,index){
+				axios.delete('/dashboard/image/'+id)
+                        .then(response => {
+                       
+                       Vue.delete(this.images, index);
+
+                       swal(
+						  'Image deleted',
+						  'You clicked the button!',
+						  'success'
+						);
+                   
+             });
          }
-     }
+		}
 	});
 </script>
 @endsection
