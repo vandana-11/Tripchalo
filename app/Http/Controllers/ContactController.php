@@ -16,6 +16,11 @@ class ContactController extends Controller
         return Contact::all();
     }
 
+
+    public function create() {
+    
+        return view('add_contacts');
+    }
         /**
          * Create a new record into contacts table
          * @return [type] [description]
@@ -38,7 +43,8 @@ class ContactController extends Controller
 
     public function show($id)
     {
-        return Contact::find($id);
+        $contact = Contact::find($id);
+        return view('edit_contacts', ['contact' => $contact]);
     }
 
     /**

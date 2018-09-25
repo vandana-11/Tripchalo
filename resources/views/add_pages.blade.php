@@ -44,12 +44,12 @@
 					<th>Action</th>
 				</thead>
 				<tbody>
-					<tr v-for="page in pages">
+					<tr v-for="(page,index) in pages">
 						<td>@{{ page.id }}</td>
 						<td>@{{ page.title }}</td>
 						<td>
-							<button>Edit</button>
-							<button>Delete</button>
+							<a :href="'/dashboard/page/' + page.id " class="btn btn-s btn-info">Edit</a>
+							<button class="btn btn-info" @click="delete_page(page.id,index)">Delete</button>
 						</td>
 					</tr>
 				</tbody>
@@ -93,7 +93,11 @@
 				 axios.post('/dashboard/page', data)
                         .then(response => {
                         	
-                        	alert('Data added');
+                        	swal(
+						  'Page Added',
+						  'You clicked the button!',
+						  'success'
+							);
 
                             this.pages.push(response.data);
                             this.title = '';
@@ -104,10 +108,23 @@
 
 			},
 
+			delete_page :function(id,index){
+				axios.delete('/dashboard/page/'+id)
+                        .then(response => {
+                       
+                       Vue.delete(this.pages, index);
+
+                       swal(
+						  'Page deleted',
+						  'You clicked the button!',
+						  'success'
+						);
+                   
+             });
+         }
+
 		}
 	});
-
-
 
 </script>
 @endsection

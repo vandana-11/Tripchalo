@@ -20,7 +20,9 @@ class ImageController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-
+    public function create() {
+       return view('add_images');
+    }
     public function store(Request $request)
     {
         $image = new Image;
@@ -38,8 +40,9 @@ class ImageController extends Controller
      * @return [type]     [description]
      */
     public function show($id)
-    {
-        return Image::find($id);
+    {        
+        $image = Image::find($id);
+        return view('edit_images', ['image' => $image]);
     }
 
     /**

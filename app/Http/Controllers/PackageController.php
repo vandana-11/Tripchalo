@@ -86,7 +86,8 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $package = Package::find($id);
-        return $package->delete();
+        return $package->delete() ? 'True' : 'False';
+        // write the logic l
     }
 
 }

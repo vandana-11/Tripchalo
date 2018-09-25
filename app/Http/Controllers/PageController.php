@@ -50,7 +50,8 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        return Page::find($id);
+        $page = Page::find($id);
+        return view('edit_pages', ['page' => $page]);
     }
 
     /**
@@ -63,7 +64,7 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
         $page = Page::find($id);
-        $page->user_id = $request->user_id;
+        $page->user_id = Auth::user()->id;
         $page->title = $request->title;
         $page->body = $request->body;
         $page->slug = $request->slug;
@@ -81,7 +82,7 @@ class PageController extends Controller
     public function destroy($id)
     {
         $page = Page::find($id);
-        return $page->delete() ? 'True' : 'False';
+        return $page->delete() ? 'True': 'False';
     }
 
 

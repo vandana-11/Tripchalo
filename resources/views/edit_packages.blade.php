@@ -66,7 +66,7 @@
 		
 		methods: {
 			edit_package: function(id) {
-				alert(id);
+				
 				data = {
 					title: this.title,
 					slug: this.slug,
@@ -84,7 +84,11 @@
 				
 				 axios.put('/dashboard/package/'+id, data)
                         .then(response => {
-                        	alert('data updated');
+                        	swal(
+						  'Page deleted',
+						  'You clicked the button!',
+						  'success'
+							);
                             this.packages.push(response.data);
                             this.title = '';
                             this.slug = '';

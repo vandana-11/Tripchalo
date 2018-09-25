@@ -31,17 +31,19 @@ Route::prefix('dashboard')->group(function() {
 
 	Route::get('/package/add', 'PackageController@create'); 
 	Route::get('/package', 'PackageController@index');
-	Route::get('/package/{id}', 'PackageController@show');
+	Route::get('/package/{id}', 'PackageController@show'); //here u can display form
 	Route::post('/package', 'PackageController@store');
-	Route::put('/package/{id}', 'PackageController@update'); 
+	Route::put('/package/{id}', 'PackageController@update'); // here u can sent request
 	Route::delete('/package/{id}', 'PackageController@destroy');
 
+	Route::get('/contact/add', 'ContactController@create');
 	Route::get('/contact', 'ContactController@index');
 	Route::get('/contact/{id}', 'ContactController@show');
 	Route::post('/contact', 'ContactController@store');
 	Route::put('/contact/{id}', 'ContactController@update'); 
 	Route::delete('/contact/{id}', 'ContactController@destroy');
 
+	Route::get('/image/add', 'ImageController@create');
 	Route::get('/image', 'ImageController@index');
 	Route::get('/image/{id}', 'ImageController@show');
 	Route::post('/image', 'ImageController@store');

@@ -125,7 +125,11 @@
 		   	    axios.post('/dashboard/package', data)
                         .then(response => {
                         	
-                        	alert('Data added');
+                        	swal(
+						  'Package Added',
+						  'You clicked the button!',
+						  'success'
+							);
 
                             this.packages.push(response.data);
                             this.title = '';
@@ -141,8 +145,12 @@
 			delete_package :function(id,index){
 				axios.delete('/dashboard/package/'+id)
                         .then(response => {
-                        	alert('Data deleted');
-                       Vue.delete(this.data, index);
+                        	swal(
+						  'Package Updated',
+						  'You clicked the button!',
+						  'success'
+							);
+                       Vue.delete(this.packages, index);
                    
              });
          }
